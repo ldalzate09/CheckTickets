@@ -96,7 +96,7 @@ namespace CheckTickets.ViewModels
         {
             if (TicketCode == null)
             {
-                Message =  "Ingrese su código";
+                Message =  "Ingrese el ticket";
                 Color = "Red";
                 return;
             }
@@ -111,7 +111,7 @@ namespace CheckTickets.ViewModels
 
             if (response.IsSuccess)
             {
-                Message = "Ticket ya registrado";
+                Message = "Ticket ya leido";
                 Color = "Red";
                 IsRunning = false;
                 return;
@@ -125,12 +125,12 @@ namespace CheckTickets.ViewModels
             IsRunning = false;
             if (!response.IsSuccess)
             {
-                Message = "El ticket no pudo ser registrado";
+                Message = "Error al registrar el ticket";
                 Color = "Red";
                 return;
             }
 
-            Message = "Acceso permitido, Ticket: " + this.TicketCode;
+            Message = this.TicketCode + ", Acceso Autorizado";
             Color = "Green";
 
 

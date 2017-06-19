@@ -1,44 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CheckTickets.Views.CheckTicketPage" Title="Check Ticket"
+             x:Class="CheckTickets.Views.CheckTicketPage" 
+             Title="Check Ticket"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding CheckTicket}"
             Padding="8"
-            Orientation="Vertical"
-            VerticalOptions="Center">
+            VerticalOptions="CenterAndExpand">
             <Label
                 Text="Ticket Code:"
                 HorizontalOptions="Center"
                 FontSize="Medium">
             </Label>
             <Entry
-                Placeholder="Ingrese el código de su ticket"
+                Placeholder="Enter ticket code..."
                 Text="{Binding TicketCode, Mode=TwoWay}"
-                Keyboard="Email"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center">
             </Entry>
-            <ActivityIndicator
-                    IsRunning="{Binding IsRunning}">
-            </ActivityIndicator>
             <Label 
                 Text="{Binding Message}" 
-                BackgroundColor="Silver" 
                 TextColor="{Binding Color}" 
                 FontAttributes="Bold"
                 FontSize="Medium"
                 HorizontalTextAlignment="Center" 
                 VerticalTextAlignment="Center" 
-                HorizontalOptions="FillAndExpand"
-                HeightRequest="60">
+                HorizontalOptions="FillAndExpand">
             </Label>
+            <ActivityIndicator
+                    IsRunning="{Binding IsRunning}">
+            </ActivityIndicator>
             <Button
-                Text="Validar Ticket"
+                Text="Check"
                 Command="{Binding CheckTicketCommand}"
-                BackgroundColor="DarkRed"
+                BackgroundColor="DarkBlue"
                 TextColor="White">
             </Button>
         </StackLayout>

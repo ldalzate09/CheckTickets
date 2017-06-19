@@ -8,10 +8,10 @@
         <StackLayout
             BindingContext="{Binding Login}"
             Padding="8"
-            VerticalOptions="Center">
+            VerticalOptions="CenterAndExpand">
             <Image
-                HeightRequest="100"
-                WidthRequest="100"
+                HeightRequest="50"
+                WidthRequest="50"
                 Source="ticket.png">
             </Image>
             <Label
@@ -72,23 +72,8 @@
                 Text="Login"
                 Command="{Binding LoginCommand}"
                 BackgroundColor="DarkBlue"
-                TextColor="White"
-                BorderRadius="40">
+                TextColor="White">
             </Button>
-            <!--
-            <Label 
-                    Text="{Binding Message}" 
-                    BackgroundColor="Silver" 
-                    TextColor="Red" 
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    HorizontalTextAlignment="Center" 
-                    VerticalTextAlignment="Center" 
-                    HorizontalOptions="FillAndExpand" 
-                    VerticalOptions="FillAndExpand"
-                    HeightRequest="60">
-            </Label>
-            -->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
