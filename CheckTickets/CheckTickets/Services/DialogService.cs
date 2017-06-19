@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CheckTickets.Services
 {
-    class DialogService
+    public class DialogService
     {
         public async Task ShowMessage(string title, string message)
         {

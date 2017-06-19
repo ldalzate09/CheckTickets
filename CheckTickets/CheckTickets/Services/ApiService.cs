@@ -1,53 +1,16 @@
 ﻿using CheckTickets.Models;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckTickets.Services
 {
-    class ApiService
+    public class ApiService
     {
-        public async Task<Response> GetTicket<T>(string urlBase, string servicePrefix, string controller)
-        {
-            try
-            {
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format("{0}{1}", servicePrefix, controller);
-                var response = await client.GetAsync(url);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = response.StatusCode.ToString(),
-                    };
-                }
-
-                var result = await response.Content.ReadAsStringAsync();
-                var list = JsonConvert.DeserializeObject<List<T>>(result);
-                return new Response
-                {
-                    IsSuccess = true,
-                    Message = "Ok",
-                    Result = list,
-                };
-            }
-            catch (Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message,
-                };
-            }
-        }
-
-        public async Task<Response> Login<T>(string urlBase, string servicePrefix, string controller, T model)
+        public async Task<Response> Post<T>(string urlBase, string servicePrefix,
+                                            string controller, T model)
         {
             try
             {
@@ -68,13 +31,14 @@ namespace CheckTickets.Services
                 }
 
                 var result = await response.Content.ReadAsStringAsync();
-                var newRecord = JsonConvert.DeserializeObject<T>(result);
+                var userLog = JsonConvert.DeserializeObject<User>(result);
 
                 return new Response
                 {
                     IsSuccess = true,
-                    Message = "Record added OK",
-                    Result = newRecord,
+                    Message = "Login OK",
+                    Result = userLog,
+
                 };
             }
             catch (Exception ex)
@@ -86,5 +50,45 @@ namespace CheckTickets.Services
                 };
             }
         }
+
+        public async Task<Response> GetTicket(string urlBase, string servicePrefix,
+                                           string controller, Ticket ticket)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}{2}", servicePrefix, controller, ticket.TicketCode);
+                var response = await client.GetAsync(url);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        //TODO: Mejorar el mensaje cuando falle
+                        IsSuccess = false,
+                        Message = response.StatusCode.ToString(),
+                    };
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<Ticket>(result);
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Ok",
+                    Result = list,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
     }
 }
