@@ -83,7 +83,6 @@ namespace CheckTickets.ViewModels
             Color = "Green";
             this.UserId = user.UserId;
             this.DateTime = DateTime.Now;
-
         } 
         #endregion
 

@@ -36,10 +36,8 @@ namespace CheckTickets.ViewModels
             {
                 instance = new MainViewModel();
             }
-
             return instance;
         }
         #endregion
-
     }
 }
