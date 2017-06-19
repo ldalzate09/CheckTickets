@@ -9,46 +9,71 @@
             BindingContext="{Binding Login}"
             Padding="8"
             VerticalOptions="Center">
-            <StackLayout 
-                Orientation="Vertical">
-                <Image
-                    HorizontalOptions="Center"
-                    Source="logo.png"
-                    WidthRequest="150"
-                    HeightRequest="150">
-                </Image>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Check Ticket"
-                    FontSize="Large"
-                    FontAttributes="Bold">
-                </Label>
-                <Entry
-                    Placeholder="Ingrese su email"
-                    Text="{Binding Email, Mode=TwoWay}"
-                    Keyboard="Email"
-                    HorizontalOptions="CenterAndExpand"
-                    WidthRequest="300">
-                </Entry>
-            </StackLayout>
-            <StackLayout 
-                Orientation="Vertical">
-                <Entry
-                    Placeholder="Ingrese su passsword"
-                    Text="{Binding Password, Mode=TwoWay}"
-                    IsPassword="True"
-                    HorizontalOptions="CenterAndExpand"
-                    WidthRequest="300">
-                </Entry>
-            </StackLayout>
+            <Image
+                HeightRequest="100"
+                WidthRequest="100"
+                Source="ticket.png">
+            </Image>
+            <Label
+                Text="Tickets"
+                FontSize="Large"
+                FontAttributes="Bold"
+                HorizontalOptions="Center">
+            </Label>
+            <Grid
+                Padding="30,0,30,0">
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label   
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        Text="Email: ">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center"
+                        Placeholder="Enter email..."
+                        Keyboard="Email"
+                        Text="{Binding Email, Mode=TwoWay}">
+                    </Entry>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        Text="Password: ">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center"
+                        Placeholder="Enter password..."
+                        IsPassword="True"
+                        Text="{Binding Password, Mode=TwoWay}">
+                    </Entry>
+                </Grid>
+            </Grid>
             <ActivityIndicator
                     IsRunning="{Binding IsRunning}">
             </ActivityIndicator>
             <Button
                 Text="Login"
                 Command="{Binding LoginCommand}"
-                BackgroundColor="DarkRed"
-                TextColor="White">
+                BackgroundColor="DarkBlue"
+                TextColor="White"
+                BorderRadius="40">
             </Button>
             <!--
             <Label 
